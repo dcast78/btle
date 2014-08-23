@@ -7,35 +7,30 @@ RF24 radio(9,10);
 
 BTLE btle(&radio);
 
-//char buffer = "ble";
 
 char buffer[9] = "";
-char fix[9] = "test";
+char fix[7] = "Power:";
 int x=0;
-long randNumber;
-int randchannel;
+int analog;
 
 void setup() {
   randomSeed(analogRead(0));
   Serial.begin(9600);
   while (!Serial) { }
-  Serial.println("BTLE advertisement sender");
+  Serial.println("BTLE solar power meter");
 }
 
 void loop() {
   btle.begin(buffer);
-  randchannel = random(0, 3);
-  btle.advertise(0,randchannel);
-  Serial.print(randchannel);
+  btle.advertise(0,0);
   Serial.print(" ");
   btle.hopChannel();
-  randNumber = random(10, 20);
-  
-  sprintf(buffer,"%s %u",fix,randNumber);
+  analog=analogRead(A0);  
+  sprintf(buffer,"%s % 4u",fix,analog);
 
   //snprintf(buffer, 8, "%.1f test", analog);
   Serial.println(buffer);
-  delay(100);
-  buffer[7]++;
+  delay(30);
+//  buffer[7]++;
 }
 
