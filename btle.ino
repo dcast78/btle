@@ -1,3 +1,18 @@
+/*
+Simple Bluetooth BLE arduino - nrf2401 test.
+
+Used to broadcast value of mini solar panel tension.
+
+Based on http://dmitry.gr/index.php?r=05.Projects&proj=15&proj=11.%20Bluetooth%20LE%20fakery post
+
+and floe liberary for Arduino https://github.com/floe/BTLE
+
+Download library RF24 and BTLE follwing instruction on https://github.com/floe/BTLE home page
+
+Note: the BTLE class and the examples are licensed under GPLv3. However, the helper functions in btle.inc are (C) 2012 by Dmitry Grinberg under a separate license (see file for details).
+
+*/
+
 #include <SPI.h>
 #include <RF24.h>
 #include <BTLE.h>
